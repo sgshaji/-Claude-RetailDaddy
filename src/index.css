@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    min-height: 100vh;
+    background-color: #f3f4f6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@layer components {
+  /* Touch-friendly button styles */
+  .btn-touch {
+    @apply min-h-touch px-6 py-3 text-lg font-semibold rounded-xl transition-all active:scale-95;
+  }
+
+  .btn-touch-large {
+    @apply min-h-touch-large px-8 py-4 text-xl font-bold rounded-xl transition-all active:scale-95;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply bg-primary-500 text-white hover:bg-primary-600 active:bg-primary-700;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300 active:bg-gray-400;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 text-white hover:bg-red-600 active:bg-red-700;
+  }
+
+  /* Large input for mobile */
+  .input-large {
+    @apply h-14 px-4 text-lg rounded-lg border-2 border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors;
+  }
+
+  /* Card for mobile */
+  .card-mobile {
+    @apply bg-white rounded-xl shadow-md p-4;
+  }
+
+  /* Safe area padding for notched phones */
+  .safe-area-pb {
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
+
+  .safe-area-pt {
+    padding-top: calc(1rem + env(safe-area-inset-top));
+  }
+}
+
+@layer utilities {
+  /* Prevent text selection on touch elements */
+  .no-select {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Toast animation */
+  .animate-slideDown {
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
