@@ -26,8 +26,8 @@ export function BottomNav() {
     },
     {
       path: '/insights',
-      icon: '📈',
-      label: 'Insights'
+      icon: '📅',
+      label: 'Monthly'
     }
   ];
 

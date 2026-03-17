@@ -18,7 +18,7 @@ export function AppProvider({ children }) {
       currency: 'INR',
       currencySymbol: '₹',
       lowStockThreshold: 5,
-      shopName: 'My Shop',
+      shopName: 'CounterBook',
       notifications: true
     };
   });

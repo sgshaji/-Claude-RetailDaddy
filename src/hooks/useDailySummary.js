@@ -1,6 +1,22 @@
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db, getTodayDateString } from '../db/db';
 
+export function useMonthSummaries(year, month) {
+  return useLiveQuery(async () => {
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const startDate = firstDay.toISOString().split('T')[0];
+    const endDate = lastDay.toISOString().split('T')[0];
+
+    const summaries = await db.daily_summaries
+      .where('date')
+      .between(startDate, endDate, true, true)
+      .toArray();
+
+    return summaries.sort((a, b) => a.date.localeCompare(b.date));
+  }, [year, month]);
+}
+
 export function useDailySummary() {
   const todaySummary = useLiveQuery(async () => {
     const today = getTodayDateString();

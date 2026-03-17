@@ -10,9 +10,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'icons/*.png'],
       manifest: {
-        name: 'Retail Shop Manager',
-        short_name: 'ShopManager',
-        description: 'Mobile-first retail shop management app for tracking sales, inventory, and insights',
+        name: 'CounterBook',
+        short_name: 'CounterBook',
+        description: 'Your digital billing counter ledger — track sales, inventory, and profits on the go',
         theme_color: '#10b981',
         background_color: '#ffffff',
         display: 'standalone',
