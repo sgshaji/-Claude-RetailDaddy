@@ -31,7 +31,12 @@ export async function fetchSales(userId) {
 }
 
 export async function createSale(userId, sale) {
-  const { data, error } = await supabase.from('sales').insert({ ...sale, user_id: userId }).select().single();
+  const row = { ...sale, user_id: userId };
+  // Allow backdating sales — if created_at is provided, use it
+  if (sale.created_at) {
+    row.created_at = sale.created_at;
+  }
+  const { data, error } = await supabase.from('sales').insert(row).select().single();
   if (error) throw error;
   // Decrement stock
   const { data: product } = await supabase.from('products').select('current_stock').eq('id', sale.product_id).single();
